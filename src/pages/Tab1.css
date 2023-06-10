@@ -9,7 +9,6 @@
   width: fit-content;
   height: 100%;
   position: relative;
-  transform: translateX(0);
   transition: transform 0.3s ease-out;
   white-space: nowrap;
   overflow: hidden; /* 이미지 내부의 내용이 넘치지 않도록 함 */
