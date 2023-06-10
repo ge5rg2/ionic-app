@@ -53,23 +53,21 @@ export const Scenes = [
     background_url: "/img/m6.jpg",
     hitzones: [
       { x: "12%", y: "80%", goto: 4 },
-      { x: "80%", y: "20%", goto: 6 },
+      { x: "50%", y: "20%", goto: 6 },
+      { x: "80%", y: "20%", goto: 7 },
     ],
   },
   {
     id: 6,
     background_url: "/img/m7.jpg",
-    hitzones: [
-      { x: "80%", y: "80%", goto: 5 },
-      { x: "18%", y: "20%", goto: 7 },
-    ],
+    hitzones: [{ x: "18%", y: "20%", goto: 5 }],
   },
   {
     id: 7,
     background_url: "/img/m8.jpg",
     hitzones: [
       { x: "27%", y: "80%", goto: 6 },
-      { x: "80%", y: "20%", goto: 8 },
+      { x: "80%", y: "20%", goto: 9 },
       { x: "63%", y: "20%", goto: 8 },
     ],
   },
@@ -77,13 +75,16 @@ export const Scenes = [
     id: 8,
     background_url: "/img/m9.jpg",
     hitzones: [
-      { x: "6%", y: "80%", goto: 7 },
-      { x: "42%", y: "20%", goto: 9 },
+      { x: "10%", y: "20%", goto: 9 },
+      { x: "45%", y: "80%", goto: 7 },
     ],
   },
   {
     id: 9,
     background_url: "/img/m10.jpg",
-    hitzones: [{ x: "32%", y: "30%", goto: 8 }],
+    hitzones: [
+      { x: "32%", y: "30%", goto: 7 },
+      { x: "48%", y: "30%", goto: 8 },
+    ],
   },
 ];
