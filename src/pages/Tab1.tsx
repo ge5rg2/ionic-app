@@ -5,15 +5,13 @@ import { useState } from "react";
 import { Scene, Scenes } from "../interface/types";
 
 const Tab1: React.FC = () => {
-  const [imageLoaded, setImageLoaded] = useState<boolean>(true);
   const [x, setX] = useState<number>(0);
   const [scenes, setScenes] = useState<Scene[]>(Scenes);
 
   /** fn: Functions that work on left click */
   const handleScrollLeft = () => {
     if (x - 10 < 0) {
-      setX((prevPosition) => (prevPosition = 60));
-      return;
+      return setX(60);
     }
     return setX((prevPosition) => prevPosition - 10);
   };
@@ -21,18 +19,19 @@ const Tab1: React.FC = () => {
   /** fn: Functions that work on right click */
   const handleScrollRight = () => {
     if (x + 10 > 60) {
-      setX((prevPosition) => (prevPosition = 0));
-      return;
+      return setX(0);
     }
     return setX((prevPosition) => prevPosition + 10);
   };
 
   /** fn: Functions that work on Marker click */
   const handleMarkerClick = (goto: number) => {
-    setImageLoaded(false);
     const scene = Scenes.find((s) => s.id === goto);
     if (scene) {
       setScenes([scene]);
+      if (scene.id == 9) {
+        alert("Congratulations, you've reached the top.");
+      }
     }
   };
 
@@ -46,11 +45,7 @@ const Tab1: React.FC = () => {
               className="panorama-image"
               style={{ transform: `translateX(-${x}%)` }}
             >
-              <img
-                src={scene.background_url}
-                alt="Panorama"
-                onLoad={() => setImageLoaded(true)}
-              />
+              <img src={scene.background_url} alt="Panorama" />
               {scene.hitzones.map((hitzone, index) => {
                 const isUpIcon = hitzone.goto > scene.id;
                 const icon = isUpIcon ? caretUp : caretDown;
