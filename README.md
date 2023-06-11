@@ -1,5 +1,7 @@
 # SOTATEK challenge
 
+### [Check out the results here](https://ionic-app-37fde.web.app)
+
 ## Production Period
 
 5 hours
