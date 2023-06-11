@@ -6,7 +6,8 @@ import { Scene, Scenes } from "../interface/types";
 
 const Tab1: React.FC = () => {
   const [x, setX] = useState<number>(0);
-  const [scenes, setScenes] = useState<Scene[]>(Scenes);
+  const [scenes, setScenes] = useState<Scene[]>([Scenes[0]]);
+  const [loaded, setLoaded] = useState<boolean>(false);
 
   /** fn: Functions that work on left click */
   const handleScrollLeft = () => {
@@ -26,6 +27,7 @@ const Tab1: React.FC = () => {
 
   /** fn: Functions that work on Marker click */
   const handleMarkerClick = (goto: number) => {
+    setLoaded(false);
     const scene = Scenes.find((s) => s.id === goto);
     if (scene) {
       setScenes([scene]);
@@ -39,13 +41,26 @@ const Tab1: React.FC = () => {
     <IonPage>
       <IonContent fullscreen>
         <div className="panorama-container">
+          {loaded ? (
+            ""
+          ) : (
+            <div className="loading-container">
+              <div>
+                <h1>loading...</h1>
+              </div>
+            </div>
+          )}
           {scenes.map((scene) => (
             <div
               key={scene.id}
               className="panorama-image"
               style={{ transform: `translateX(-${x}%)` }}
             >
-              <img src={scene.background_url} alt="Panorama" />
+              <img
+                src={scene.background_url}
+                alt="Panorama"
+                onLoad={() => setLoaded(true)}
+              />
               {scene.hitzones.map((hitzone, index) => {
                 const isUpIcon = hitzone.goto > scene.id;
                 const icon = isUpIcon ? caretUp : caretDown;

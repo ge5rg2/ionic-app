@@ -14,6 +14,24 @@
   overflow: hidden; /* 이미지 내부의 내용이 넘치지 않도록 함 */
 }
 
+.loading-container {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #2b2b2b;
+}
+
+.loading-container div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
+
 .marker {
   position: absolute;
   color: black;
